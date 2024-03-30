@@ -78,7 +78,6 @@ sourcesJar {
 
 ['apiElements', 'runtimeElements', 'sourcesElements', 'javadocElements'].each {
     configurations."$it".outgoing {
-        capability("$group:$artifact_id:$version")
         capability("$group:$artifact_id-${project.name}:$version")
     }
 }
