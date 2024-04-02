@@ -64,7 +64,7 @@ managedVersioning {
             prettyName.set 'Publish PR'
             publishPullRequestAction(
                 'github',
-                'dev/lukebemish/dynamicassetgenerator/dynamicassetgenerator-*',
+                "${project.group.replace('.', '/')}/${project.artifact_id}-*",
                 'Build PR'
             )
         }
