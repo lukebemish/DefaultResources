@@ -92,12 +92,12 @@ public class DefaultResources {
 					Config.INSTANCE.get().extract().put(modId, defaultExtraction);
 				}
 				if (extractionState == Config.ExtractionState.UNEXTRACTED) {
-					QUEUED_RESOURCES.put("__unextracted_" + modId, (s, type) -> {
+					QUEUED_RESOURCES.put("unextracted/" + modId, (s, type) -> {
 						if (defaultResources.stream().noneMatch(f -> Files.exists(f.resolve(type.getDirectory()))))
 							return null;
 						return () -> new AutoMetadataPathPackResources(s, "", defaultResources, type);
 					});
-					QUEUED_STATIC_RESOURCES.put("__unextracted_" + modId, (s, type) -> {
+					QUEUED_STATIC_RESOURCES.put("unextracted/" + modId, (s, type) -> {
 						if (defaultResources.stream().noneMatch(f -> Files.exists(f.resolve(GLOBAL_PREFIX + type.getDirectory()))))
 							return null;
 						return () -> new AutoMetadataPathPackResources(s, GLOBAL_PREFIX, defaultResources, type);
@@ -321,10 +321,10 @@ public class DefaultResources {
 			for (var file : files.toList()) {
 				if (Files.isDirectory(file)) {
 					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataPathPackResources(s, "", List.of(file), type));
-					packs.add(new Pair<>(file.getFileName().toString(), packResources));
+					packs.add(new Pair<>("directory/"+file.getFileName().toString(), packResources));
 				} else if (file.getFileName().toString().endsWith(".zip")) {
 					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataPathPackResources(s, "", List.of(file), type));
-					packs.add(new Pair<>(file.getFileName().toString(), packResources));
+					packs.add(new Pair<>("file/"+file.getFileName().toString(), packResources));
 				}
 			}
 		} catch (IOException ignored) {
