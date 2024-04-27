@@ -323,8 +323,8 @@ public class DefaultResources {
 					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataPathPackResources(s, "", List.of(file), type));
 					packs.add(new Pair<>("directory/"+file.getFileName().toString(), packResources));
 				} else if (file.getFileName().toString().endsWith(".zip")) {
-					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataPathPackResources(s, "", List.of(file), type));
-					packs.add(new Pair<>("file/"+file.getFileName().toString(), packResources));
+					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataFilePackResources(s, "", file, type));
+					packs.add(new Pair<>("file/"+ file.getFileName(), packResources));
 				}
 			}
 		} catch (IOException ignored) {
@@ -345,10 +345,10 @@ public class DefaultResources {
 			for (var file : files.toList()) {
 				if (Files.isDirectory(file)) {
 					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataPathPackResources(s, GLOBAL_PREFIX, List.of(file), type));
-					packs.add(new Pair<>(file.getFileName().toString(), packResources));
+					packs.add(new Pair<>("directory/"+file.getFileName(), packResources));
 				} else if (file.getFileName().toString().endsWith(".zip")) {
-					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataPathPackResources(s, GLOBAL_PREFIX, List.of(file), type));
-					packs.add(new Pair<>(file.getFileName().toString(), packResources));
+					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataFilePackResources(s, GLOBAL_PREFIX, file, type));
+					packs.add(new Pair<>("file/"+file.getFileName(), packResources));
 				}
 			}
 		} catch (IOException ignored) {
@@ -370,9 +370,9 @@ public class DefaultResources {
 			if (enabled) {
 				Path path = Services.PLATFORM.getResourcePackDir().resolve(name);
 				if (Files.isDirectory(path)) {
-					packs.add(Pair.of(name, wrap(n -> new AutoMetadataPathPackResources(n, GLOBAL_PREFIX, List.of(path), type))));
+					packs.add(Pair.of("resourcepacks/"+name, wrap(n -> new AutoMetadataPathPackResources(n, GLOBAL_PREFIX, List.of(path), type))));
 				} else if (Files.isRegularFile(path)) {
-					packs.add(Pair.of(name, wrap(n -> new AutoMetadataFilePackResources(n, GLOBAL_PREFIX, path, type))));
+					packs.add(Pair.of("resourcepacks/"+name, wrap(n -> new AutoMetadataFilePackResources(n, GLOBAL_PREFIX, path, type))));
 				} else {
 					return;
 				}
