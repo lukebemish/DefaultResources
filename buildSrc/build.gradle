@@ -1,7 +1,0 @@
-plugins {
-    alias cLibs.plugins.conventions.buildsrc
-}
-
-dependencies {
-    implementation cLibs.conventions.java
-}
