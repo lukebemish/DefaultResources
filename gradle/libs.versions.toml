@@ -11,7 +11,7 @@ fabric_mixin = "0.13.3+mixin.0.8.5"
 
 modsdotgroovy = "2.0.0-beta.22"
 
-managedversioning = "1.2.17"
+managedversioning = "1.2.18"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }

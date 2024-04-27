@@ -54,6 +54,7 @@ managedVersioning {
                 tag.set('${{needs.build.outputs.version}}')
                 gradlew 'Publish', 'publish', 'closeAndReleaseSonatypeStagingRepository'
                 mavenCentral()
+				mavenStaging('github')
                 sign()
             }
         }
@@ -150,6 +151,7 @@ java {
 }
 
 managedVersioning.publishing.mavenCentral()
+managedVersioning.publishing.mavenStaging(publishing)
 managedVersioning.publishing.mavenPullRequest(publishing)
 managedVersioning.publishing.mavenSnapshot(publishing)
 

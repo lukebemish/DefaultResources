@@ -133,6 +133,9 @@
                         "BUILD_CACHE_URL": "${{ secrets.BUILD_CACHE_URL }}",
                         "SONATYPE_PASSWORD": "${{ secrets.SONATYPE_PASSWORD }}",
                         "SONATYPE_USER": "${{ secrets.SONATYPE_USER }}",
+                        "STAGING_MAVEN_PASSWORD": "${{ secrets.STAGING_MAVEN_PASSWORD }}",
+                        "STAGING_MAVEN_USER": "github",
+                        "STAGING_MAVEN_URL": "https://maven.lukebemish.dev/staging/",
                         "GPG_KEY": "${{ secrets.GPG_KEY }}",
                         "GPG_PASSWORD": "${{ secrets.GPG_PASSWORD }}"
                     }
