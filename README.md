@@ -27,7 +27,7 @@ dependencies {
 }
 ```
 
-Adding artifact on Quilt or Fabric
+Adding artifact on Quilt or Fabric:
 ```gradle
 dependencies {
     modImplementation('dev.lukebemish:defaultresources:<version>') {
@@ -40,14 +40,14 @@ dependencies {
 
 For versions before Minecraft 1.20.5, DefaultResources is available at `https://maven.lukebemish.dev/releases/` under loader and Minecraft version specific coordinates:
 
-Adding artifact on NeoForge
+Adding artifact on NeoForge:
 ```gradle
 dependencies {
     implementation 'dev.lukebemish.defaultresources:defaultresources-neoforge-<minecraft version>:<version>'
 }
 ```
 
-Adding artifact on Quilt or Fabric
+Adding artifact on Quilt or Fabric:
 ```gradle
 dependencies {
     modImplementation 'dev.lukebemish.dynamicassetgenerator:defaultresources-fabriquilt-<minecraft version>:<version>'
