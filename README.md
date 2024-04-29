@@ -12,6 +12,48 @@ that will be loaded or extracted depending on mod configuration.
 
 For an example use case, see [Excavated Variants](https://github.com/lukebemish/excavated_variants)
 
+## Depending on DefaultResources
+
+Available versions of DefaultResources are tagged on this repository. DefaultResources is, as of Minecraft 1.20.5, available on maven central at `dev.lukebemish:defaultresources`; versions for different loaders may be selected by capability.
+
+Adding artifact on NeoForge:
+```gradle
+dependencies {
+    implementation('dev.lukebemish:defaultresources:<version>') {
+        capabilities {
+            requireCapability('dev.lukebemish:defaultresources-neoforge')
+        }
+    }
+}
+```
+
+Adding artifact on Quilt or Fabric
+```gradle
+dependencies {
+    modImplementation('dev.lukebemish:defaultresources:<version>') {
+        capabilities {
+            requireCapability('dev.lukebemish:defaultresources-fabric')
+        }
+    }
+}
+```
+
+For versions before Minecraft 1.20.5, DefaultResources is available at `https://maven.lukebemish.dev/releases/` under loader and Minecraft version specific coordinates:
+
+Adding artifact on NeoForge
+```gradle
+dependencies {
+    implementation 'dev.lukebemish.defaultresources:defaultresources-neoforge-<minecraft version>:<version>'
+}
+```
+
+Adding artifact on Quilt or Fabric
+```gradle
+dependencies {
+    modImplementation 'dev.lukebemish.dynamicassetgenerator:defaultresources-fabriquilt-<minecraft version>:<version>'
+}
+```
+
 ## Meta File Format
 
 The `defaultresources.meta.json` file defines how DefaultResources should treat your mod. It takes the following fields:
