@@ -274,7 +274,7 @@ public class DefaultResources {
 					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataPathPackResources(s, "", file, type));
 					packs.add(new Pair<>(file.getFileName().toString(), packResources));
 				} else if (file.getFileName().toString().endsWith(".zip")) {
-					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataPathPackResources(s, "", file, type));
+					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataFilePackResources(s, "", file, type));
 					packs.add(new Pair<>(file.getFileName().toString(), packResources));
 				}
 			}
@@ -297,7 +297,7 @@ public class DefaultResources {
 					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataPathPackResources(s, GLOBAL_PREFIX, file, type));
 					packs.add(new Pair<>(file.getFileName().toString(), packResources));
 				} else if (file.getFileName().toString().endsWith(".zip")) {
-					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataPathPackResources(s, GLOBAL_PREFIX, file, type));
+					Pack.ResourcesSupplier packResources = wrap(s -> new AutoMetadataFilePackResources(s, GLOBAL_PREFIX, file, type));
 					packs.add(new Pair<>(file.getFileName().toString(), packResources));
 				}
 			}
