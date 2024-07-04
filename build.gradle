@@ -1,4 +1,4 @@
-import org.groovymc.modsdotgroovy.core.Platform
+import org.groovymc.modsdotgroovy.types.core.Platform
 
 plugins {
     id 'maven-publish'
